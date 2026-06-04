@@ -549,6 +549,90 @@
 
   .pricing-note strong { color: var(--text); }
 
+  /* ── BILLING TOGGLE ── */
+  .billing-toggle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+
+  .billing-switch {
+    position: relative;
+    display: inline-flex;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .billing-thumb {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    background: var(--brand);
+    border-radius: 100px;
+    box-shadow: 0 4px 16px rgba(1,126,132,0.35);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+  }
+
+  .billing-switch.is-monthly .billing-thumb {
+    transform: translateX(100%);
+  }
+
+  .billing-opt {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 0;
+    min-width: 150px;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    padding: 12px 28px;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+    transition: color 0.35s ease;
+  }
+
+  .billing-opt.active { color: #fff; }
+
+  .billing-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand);
+  }
+
+  .billing-save strong { font-weight: 800; }
+
+  /* Animated price update */
+  .plan-price-amount { display: inline-block; }
+
+  @keyframes pricePop {
+    0%   { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .plan-price-amount.pop { animation: pricePop 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  .plan-billing-note {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1034,7 +1118,7 @@
         <span class="hero-stat-label">учеников без доп. оплаты</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-num">$75</span>
+        <span class="hero-stat-num">$79</span>
         <span class="hero-stat-label">старт в месяц</span>
       </div>
       <div class="hero-stat">
@@ -1160,6 +1244,19 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
       <span>Портал для учеников — <strong>безлимитно</strong>. Вы платите только за внутренние аккаунты.</span>
     </div>
+
+    <div class="billing-toggle-wrap reveal reveal-delay-2">
+      <div class="billing-switch" id="billingSwitch" role="tablist" aria-label="Период оплаты">
+        <span class="billing-thumb" aria-hidden="true"></span>
+        <button class="billing-opt active" data-mode="annual" role="tab" aria-selected="true">Оплата за год</button>
+        <button class="billing-opt" data-mode="monthly" role="tab" aria-selected="false">Помесячно</button>
+      </div>
+      <div class="billing-save">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span>Выгода до <strong>20%</strong> при оплате за год</span>
+      </div>
+    </div>
+
     <div class="pricing-grid">
 
       <!-- СТАРТ -->
@@ -1167,9 +1264,10 @@
         <div class="plan-name">Старт</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
-          <span class="plan-price-amount">75</span>
+          <span class="plan-price-amount" data-annual="79" data-monthly="99">79</span>
         </div>
         <div class="plan-price-period">в месяц</div>
+        <div class="plan-billing-note">при оплате за год</div>
         <div class="plan-desc" style="margin-top: 12px;">Идеально для запуска небольшого учебного центра или репетиторства.</div>
         <div class="plan-divider"></div>
 
@@ -1185,6 +1283,14 @@
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
           Доп. место — $25/мес
+        </div>
+
+        <div class="plan-feature-label">Инфраструктура</div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          10 ГБ облачного хранилища
         </div>
 
         <div class="plan-feature-label">Функционал</div>
@@ -1222,9 +1328,10 @@
         <div class="plan-name" style="color: var(--brand);">Бизнес</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
-          <span class="plan-price-amount">140</span>
+          <span class="plan-price-amount" data-annual="145" data-monthly="179">145</span>
         </div>
         <div class="plan-price-period">в месяц</div>
+        <div class="plan-billing-note">при оплате за год</div>
         <div class="plan-desc" style="margin-top: 12px;">Для растущих центров с несколькими преподавателями и расширенной аналитикой.</div>
         <div class="plan-divider"></div>
 
@@ -1240,6 +1347,14 @@
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
           Доп. место — $22/мес
+        </div>
+
+        <div class="plan-feature-label">Инфраструктура</div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          25 ГБ облачного хранилища
         </div>
 
         <div class="plan-feature-label">Функционал</div>
@@ -1276,9 +1391,10 @@
         <div class="plan-name">Про</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
-          <span class="plan-price-amount">260</span>
+          <span class="plan-price-amount" data-annual="259" data-monthly="299">259</span>
         </div>
         <div class="plan-price-period">в месяц</div>
+        <div class="plan-billing-note">при оплате за год</div>
         <div class="plan-desc" style="margin-top: 12px;">Для сетей учебных центров с несколькими филиалами и полной автоматизацией.</div>
         <div class="plan-divider"></div>
 
@@ -1287,7 +1403,7 @@
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          12 рабочих мест
+          10 рабочих мест
         </div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
@@ -1296,12 +1412,26 @@
           Доп. место — $20/мес
         </div>
 
+        <div class="plan-feature-label">Инфраструктура</div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          100 ГБ облачного хранилища
+        </div>
+
         <div class="plan-feature-label">Функционал</div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
           Всё из тарифа «Бизнес»
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          Мультифилиальность
         </div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
@@ -1473,6 +1603,42 @@
       }
     });
   });
+
+  // ── Pricing Billing Toggle (Monthly / Annually) ──
+  (function () {
+    const billingSwitch = document.getElementById('billingSwitch');
+    if (!billingSwitch) return;
+
+    const options = billingSwitch.querySelectorAll('.billing-opt');
+    const amounts = document.querySelectorAll('.plan-price-amount[data-annual]');
+    const notes   = document.querySelectorAll('.plan-billing-note');
+    const NOTE = { annual: 'при оплате за год', monthly: 'при помесячной оплате' };
+
+    function applyBilling(mode) {
+      billingSwitch.classList.toggle('is-monthly', mode === 'monthly');
+
+      options.forEach(opt => {
+        const isActive = opt.dataset.mode === mode;
+        opt.classList.toggle('active', isActive);
+        opt.setAttribute('aria-selected', String(isActive));
+      });
+
+      amounts.forEach(el => {
+        const next = mode === 'monthly' ? el.dataset.monthly : el.dataset.annual;
+        if (el.textContent === next) return;
+        el.textContent = next;
+        el.classList.remove('pop');
+        void el.offsetWidth; // force reflow to restart the animation
+        el.classList.add('pop');
+      });
+
+      notes.forEach(n => { n.textContent = NOTE[mode]; });
+    }
+
+    options.forEach(opt => {
+      opt.addEventListener('click', () => applyBilling(opt.dataset.mode));
+    });
+  })();
 </script>
 
 </body>
