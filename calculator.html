@@ -254,49 +254,6 @@
 
   .field-divider { height: 1px; background: var(--border); margin: 22px 0; }
 
-  /* Projection segmented toggle */
-  .proj-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: 9px;
-  }
-  .seg {
-    position: relative;
-    display: flex;
-    background: rgba(120,120,128,0.12);
-    border-radius: 100px;
-    padding: 4px;
-  }
-  .seg .thumb {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    left: 4px;
-    width: calc(50% - 4px);
-    background: var(--brand);
-    border-radius: 100px;
-    box-shadow: 0 4px 14px rgba(1,126,132,0.35);
-    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
-  }
-  .seg.is-annual .thumb { transform: translateX(100%); }
-  .seg button {
-    position: relative;
-    z-index: 1;
-    flex: 1 1 0;
-    border: none;
-    background: transparent;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-secondary);
-    padding: 10px 8px;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  .seg button.active { color: #fff; }
-
   .btn-export {
     display: flex;
     align-items: center;
@@ -483,11 +440,11 @@
       <div class="presets" id="presets">
         <button type="button" class="preset active" data-preset="annual">
           <span data-i18n="presetAnnual">Годовые цены</span>
-          <small>79 / 145 / 259</small>
+          <small>79 / 159 / 259</small>
         </button>
         <button type="button" class="preset" data-preset="monthly">
           <span data-i18n="presetMonthly">Месячные цены</span>
-          <small>99 / 179 / 299</small>
+          <small>99 / 189 / 299</small>
         </button>
       </div>
 
@@ -513,7 +470,7 @@
       <div class="field">
         <label for="inBiz"><span data-i18n="bizLabel">Тариф «Бизнес»</span> <span class="hint" data-i18n="perMonth">/ мес</span></label>
         <div class="input-money">
-          <input type="number" id="inBiz" value="145" min="0" step="1" inputmode="decimal">
+          <input type="number" id="inBiz" value="159" min="0" step="1" inputmode="decimal">
         </div>
         <div class="field-users" data-i18n="seatsBiz">6 рабочих мест</div>
       </div>
@@ -527,13 +484,6 @@
       </div>
 
       <div class="field-divider"></div>
-
-      <div class="proj-label" data-i18n="projLabel">Период проекции</div>
-      <div class="seg" id="projSeg">
-        <span class="thumb" aria-hidden="true"></span>
-        <button type="button" class="active" data-proj="monthly" data-i18n="projMonthlyBtn">За месяц</button>
-        <button type="button" data-proj="annual" data-i18n="projAnnualBtn">За год</button>
-      </div>
 
       <button type="button" class="btn-export" id="exportBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
@@ -585,8 +535,8 @@
 
   // ── Quick pricing presets ──
   const PRESETS = {
-    annual:  { inStart: 79, inBiz: 145, inPro: 259 },
-    monthly: { inStart: 99, inBiz: 179, inPro: 299 }
+    annual:  { inStart: 79, inBiz: 159, inPro: 259 },
+    monthly: { inStart: 99, inBiz: 189, inPro: 299 }
   };
 
   // ── Translations: shares the "otizimLang" key with the main site ──
@@ -648,7 +598,6 @@
   };
 
   let currentLang = (function () { try { return localStorage.getItem('otizimLang') || 'ru'; } catch (e) { return 'ru'; } })();
-  let projection = 'monthly'; // 'monthly' | 'annual'
 
   const money0 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
@@ -660,17 +609,16 @@
   function render() {
     const t = T[currentLang] || T.ru;
     const cost = num('inCost');
-    const months = projection === 'annual' ? 12 : 1;
-    const periodWord = projection === 'annual' ? t.perYearWord : t.perMonthWord;
+    const periodWord = t.perMonthWord;
 
-    document.getElementById('projTag').textContent = projection === 'annual' ? t.projAnnual : t.projMonthly;
+    document.getElementById('projTag').textContent = t.projMonthly;
     document.getElementById('footCost').textContent = t.baseLicense + ': ' + money0.format(cost) + ' ' + t.perUser;
     document.getElementById('footDate').textContent = t.generated + ': ' + new Date().toLocaleDateString(t.locale);
 
     const html = PLANS.map(p => {
       const price   = num(p.inputId);
-      const revenue = price * months;
-      const vendor  = p.users * cost * months;
+      const revenue = price;
+      const vendor  = p.users * cost;
       const profit  = revenue - vendor;
       const margin  = revenue > 0 ? (profit / revenue) * 100 : 0;
       return `
@@ -684,7 +632,7 @@
             <span class="m-val">${money0.format(revenue)}</span>
           </div>
           <div class="metric">
-            <span class="m-label">${t.vendor}</span>
+            <span class="m-label">${t.vendor} ${periodWord}</span>
             <span class="m-val">${money0.format(vendor)}</span>
           </div>
           <div class="metric profit">
@@ -739,17 +687,7 @@
     });
   });
 
-  // ── Projection segmented toggle (monthly x1 / annual x12) ──
-  const projSeg = document.getElementById('projSeg');
-  projSeg.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      projection = btn.dataset.proj;
-      projSeg.classList.toggle('is-annual', projection === 'annual');
-      projSeg.querySelectorAll('button').forEach(b =>
-        b.classList.toggle('active', b.dataset.proj === projection));
-      render();
-    });
-  });
+  // ── Projection toggle removed: the dashboard is always a monthly basis ──
 
   // ── Export ONLY the results dashboard as a clean PNG ──
   const exportBtn = document.getElementById('exportBtn');
@@ -780,7 +718,7 @@
 
       const link = document.createElement('a');
       const stamp = new Date().toISOString().slice(0, 10);
-      link.download = `otizim-unit-economics-${projection}-${stamp}.png`;
+      link.download = `otizim-unit-economics-${stamp}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (err) {
