@@ -82,6 +82,37 @@
   .back-link:hover { color: var(--brand); border-color: var(--brand); background: var(--brand-dim); }
   .back-link svg { width: 14px; height: 14px; }
 
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    background: rgba(120,120,128,0.12);
+    border-radius: 100px;
+  }
+  .lang-switch button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    padding: 6px 13px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  }
+  .lang-switch button:hover { color: var(--text); }
+  .lang-switch button.active {
+    background: #fff;
+    color: var(--brand);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.05);
+  }
+
   /* ── LAYOUT ── */
   .wrap { max-width: 1180px; margin: 0 auto; padding: 56px 40px 80px; }
 
@@ -139,6 +170,40 @@
     color: var(--text-tertiary);
     margin-bottom: 22px;
   }
+
+  /* Quick presets (annual vs monthly pricing) */
+  .presets-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+  .presets { display: flex; gap: 10px; margin-bottom: 26px; }
+  .preset {
+    flex: 1 1 0;
+    padding: 12px 10px;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-align: center;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .preset:hover { color: var(--text); border-color: var(--border-strong); }
+  .preset.active {
+    color: var(--brand);
+    border-color: var(--brand);
+    background: var(--brand-dim);
+  }
+  .preset small { display: block; font-weight: 600; font-size: 11px; color: var(--text-tertiary); margin-top: 3px; }
+  .preset.active small { color: var(--brand); opacity: 0.85; }
 
   .field { margin-bottom: 18px; }
   .field label {
@@ -260,11 +325,12 @@
 
   /* ── RESULTS DASHBOARD (export target) ── */
   .results {
-    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
     border-radius: var(--radius);
     padding: 36px;
-    color: #fff;
-    box-shadow: 0 24px 60px rgba(1,126,132,0.30);
+    color: var(--text);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   }
 
   .results-head {
@@ -274,18 +340,18 @@
     gap: 20px;
     margin-bottom: 26px;
   }
-  .results-head h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .results-head h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
   .results-head .proj-tag {
     display: inline-block;
     margin-top: 8px;
     padding: 4px 12px;
-    background: rgba(255,255,255,0.16);
-    border: 1px solid rgba(255,255,255,0.25);
+    background: var(--brand-dim);
+    border: 1px solid var(--brand-dim2);
     border-radius: 100px;
     font-size: 12px;
     font-weight: 700;
+    color: var(--brand);
   }
-  .results-logo { opacity: 0.9; }
   .results-logo svg { width: 96px; height: auto; display: block; }
 
   .result-cards {
@@ -294,14 +360,15 @@
     gap: 14px;
   }
   .result-card {
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.18);
+    background: #FAFAFA;
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 20px;
   }
   .result-card.featured {
-    background: rgba(255,255,255,0.20);
-    border-color: rgba(255,255,255,0.45);
+    background: #fff;
+    border: 1.5px solid var(--brand);
+    box-shadow: 0 0 0 4px var(--brand-dim);
   }
   .rc-head {
     display: flex;
@@ -309,13 +376,14 @@
     justify-content: space-between;
     margin-bottom: 14px;
   }
-  .rc-name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+  .rc-name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; color: var(--text); }
   .rc-users {
     font-size: 11px;
     font-weight: 700;
     padding: 3px 9px;
     border-radius: 100px;
-    background: rgba(255,255,255,0.18);
+    background: var(--brand-dim);
+    color: var(--brand);
   }
   .metric {
     display: flex;
@@ -323,19 +391,19 @@
     justify-content: space-between;
     gap: 8px;
     padding: 9px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.14);
+    border-bottom: 1px solid var(--border);
     font-size: 13px;
   }
   .metric:last-child { border-bottom: none; }
-  .metric .m-label { color: rgba(255,255,255,0.72); }
-  .metric .m-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .metric .m-label { color: var(--text-secondary); }
+  .metric .m-val { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); }
   .metric.profit { padding-top: 12px; }
-  .metric.profit .m-label { color: #fff; font-weight: 700; }
-  .metric.profit .m-val { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .metric.profit .m-label { color: var(--text); font-weight: 700; }
+  .metric.profit .m-val { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--brand); }
   .metric.margin .m-val {
     padding: 2px 10px;
-    background: rgba(255,255,255,0.92);
-    color: var(--brand-dark);
+    background: var(--brand-dim);
+    color: var(--brand);
     border-radius: 100px;
     font-weight: 800;
   }
@@ -343,13 +411,13 @@
   .results-foot {
     margin-top: 24px;
     padding-top: 18px;
-    border-top: 1px solid rgba(255,255,255,0.18);
+    border-top: 1px solid var(--border);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 8px;
     font-size: 12px;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-tertiary);
   }
 
   /* Hide UI chrome while exporting the dashboard image */
@@ -385,28 +453,48 @@
         <path d="M109.18 54.3007H77.9962C68.6199 63.7242 63.3666 69.0038 54.0293 78.3882V109.729C63.4056 119.153 68.6589 124.425 77.9962 133.817H109.18C118.557 124.393 123.802 119.114 133.147 109.729V78.3882C123.771 68.9647 118.518 63.685 109.18 54.3007Z" fill="#017E84"/>
       </svg>
     </a>
-    <a class="back-link" href="index.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      На главную
-    </a>
+    <div class="nav-right">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language / Язык / Til">
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="uz">UZ</button>
+      </div>
+      <a class="back-link" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span data-i18n="back">На главную</span>
+      </a>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="page-head hide-on-export">
-    <span class="page-badge">Partner Portal · Unit Economics</span>
-    <h1>Калькулятор юнит-экономики</h1>
-    <p>Подберите цены и стоимость лицензии Odoo — и мгновенно увидите выручку, затраты, чистую прибыль и маржу по каждому тарифу.</p>
+    <span class="page-badge" data-i18n="badge">Partner Portal · Unit Economics</span>
+    <h1 data-i18n="h1">Калькулятор юнит-экономики</h1>
+    <p data-i18n="lead">Подберите цены и стоимость лицензии Odoo — и мгновенно увидите выручку, затраты, чистую прибыль и маржу по каждому тарифу.</p>
   </div>
 
   <div class="calc-grid">
 
     <!-- INPUTS (excluded from export) -->
     <aside class="inputs-card hide-on-export">
-      <div class="inputs-title">Параметры</div>
+
+      <div class="presets-label" data-i18n="presetTitle">Быстрые пресеты</div>
+      <div class="presets" id="presets">
+        <button type="button" class="preset active" data-preset="annual">
+          <span data-i18n="presetAnnual">Годовые цены</span>
+          <small>79 / 145 / 259</small>
+        </button>
+        <button type="button" class="preset" data-preset="monthly">
+          <span data-i18n="presetMonthly">Месячные цены</span>
+          <small>99 / 179 / 299</small>
+        </button>
+      </div>
+
+      <div class="inputs-title" data-i18n="params">Параметры</div>
 
       <div class="field">
-        <label for="inCost">Базовая стоимость лицензии Odoo <span class="hint">/ польз. / мес</span></label>
+        <label for="inCost"><span data-i18n="costLabel">Базовая стоимость лицензии Odoo</span> <span class="hint" data-i18n="perUser">/ польз. / мес</span></label>
         <div class="input-money">
           <input type="number" id="inCost" value="15" min="0" step="0.5" inputmode="decimal">
         </div>
@@ -415,43 +503,43 @@
       <div class="field-divider"></div>
 
       <div class="field">
-        <label for="inStart">Тариф «Старт» <span class="hint">/ мес</span></label>
+        <label for="inStart"><span data-i18n="startLabel">Тариф «Старт»</span> <span class="hint" data-i18n="perMonth">/ мес</span></label>
         <div class="input-money">
           <input type="number" id="inStart" value="79" min="0" step="1" inputmode="decimal">
         </div>
-        <div class="field-users">3 рабочих места</div>
+        <div class="field-users" data-i18n="seatsStart">3 рабочих места</div>
       </div>
 
       <div class="field">
-        <label for="inBiz">Тариф «Бизнес» <span class="hint">/ мес</span></label>
+        <label for="inBiz"><span data-i18n="bizLabel">Тариф «Бизнес»</span> <span class="hint" data-i18n="perMonth">/ мес</span></label>
         <div class="input-money">
           <input type="number" id="inBiz" value="145" min="0" step="1" inputmode="decimal">
         </div>
-        <div class="field-users">6 рабочих мест</div>
+        <div class="field-users" data-i18n="seatsBiz">6 рабочих мест</div>
       </div>
 
       <div class="field">
-        <label for="inPro">Тариф «Про» <span class="hint">/ мес</span></label>
+        <label for="inPro"><span data-i18n="proLabel">Тариф «Про»</span> <span class="hint" data-i18n="perMonth">/ мес</span></label>
         <div class="input-money">
           <input type="number" id="inPro" value="259" min="0" step="1" inputmode="decimal">
         </div>
-        <div class="field-users">10 рабочих мест</div>
+        <div class="field-users" data-i18n="seatsPro">10 рабочих мест</div>
       </div>
 
       <div class="field-divider"></div>
 
-      <div class="proj-label">Период проекции</div>
+      <div class="proj-label" data-i18n="projLabel">Период проекции</div>
       <div class="seg" id="projSeg">
         <span class="thumb" aria-hidden="true"></span>
-        <button type="button" class="active" data-proj="monthly">За месяц</button>
-        <button type="button" data-proj="annual">За год</button>
+        <button type="button" class="active" data-proj="monthly" data-i18n="projMonthlyBtn">За месяц</button>
+        <button type="button" data-proj="annual" data-i18n="projAnnualBtn">За год</button>
       </div>
 
       <button type="button" class="btn-export" id="exportBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-        Export as Image
+        <span id="exportBtnLabel" data-i18n="exportBtn">Export as Image</span>
       </button>
-      <div class="export-hint">PNG только с дашбордом · готово для презентации</div>
+      <div class="export-hint" data-i18n="exportHint">PNG только с дашбордом · готово для презентации</div>
     </aside>
 
     <!-- RESULTS DASHBOARD (this element is captured to PNG) -->
@@ -463,14 +551,14 @@
         </div>
         <div class="results-logo" aria-hidden="true">
           <svg width="1007" height="188" viewBox="0 0 1007 188" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M316.192 32.1558H258.57V0H418.498V32.1558H361.149V187.961H316.192V32.1558Z" fill="#ffffff"/>
-            <path d="M520.998 160.458L618.409 32.1558H523.897V21.3302L545.121 0H673.755V27.2287L576.344 155.539H675.485V166.67L654.262 188H520.998V160.497V160.458Z" fill="#ffffff"/>
-            <path d="M791.149 0H855.139L901.257 134.357L946.759 0H1007V187.961H966.361V48.9505H965.512L918.272 187.961H882.27L833.565 48.9505H832.404V187.961H791.188V0H791.149Z" fill="#ffffff"/>
-            <path d="M488.66 187.961H472.378C461.225 176.751 454.966 170.469 443.812 159.259V0H460.102C471.256 11.2095 477.506 17.4918 488.66 28.7013V187.922V187.961Z" fill="#ffffff"/>
-            <path d="M751.088 187.961H734.806C723.652 176.751 717.401 170.469 706.248 159.259V0H722.53L751.088 28.7013V187.922V187.961Z" fill="#ffffff"/>
-            <path d="M135.727 0H51.0982C31.1453 20.0533 19.9529 31.2628 0 51.3162V136.41C19.9529 156.463 31.1453 167.712 51.0982 187.765H135.766C155.719 167.712 166.911 156.463 186.864 136.41V51.3162C166.872 31.2628 155.68 20.0533 135.727 0ZM158.618 123.579C144.682 137.577 136.888 145.41 122.96 159.416H63.8728C49.9369 145.41 42.1428 137.577 28.2147 123.579V64.1942C42.1428 50.1882 49.9369 42.3548 63.8728 28.3567H122.96C136.888 42.3548 144.682 50.1882 158.618 64.1942V123.579Z" fill="#ffffff"/>
-            <path d="M250.658 69.8185H232.21C226.692 75.3645 223.566 78.5056 218.048 84.0516V102.593C223.566 108.139 226.692 111.28 232.21 116.826H250.658C256.177 111.28 259.302 108.139 264.82 102.593V84.0516C259.302 78.5056 256.177 75.3645 250.658 69.8185Z" fill="#ffffff"/>
-            <path d="M109.18 54.3007H77.9962C68.6199 63.7242 63.3666 69.0038 54.0293 78.3882V109.729C63.4056 119.153 68.6589 124.425 77.9962 133.817H109.18C118.557 124.393 123.802 119.114 133.147 109.729V78.3882C123.771 68.9647 118.518 63.685 109.18 54.3007Z" fill="#ffffff"/>
+            <path d="M316.192 32.1558H258.57V0H418.498V32.1558H361.149V187.961H316.192V32.1558Z" fill="#4A5561"/>
+            <path d="M520.998 160.458L618.409 32.1558H523.897V21.3302L545.121 0H673.755V27.2287L576.344 155.539H675.485V166.67L654.262 188H520.998V160.497V160.458Z" fill="#4A5561"/>
+            <path d="M791.149 0H855.139L901.257 134.357L946.759 0H1007V187.961H966.361V48.9505H965.512L918.272 187.961H882.27L833.565 48.9505H832.404V187.961H791.188V0H791.149Z" fill="#4A5561"/>
+            <path d="M488.66 187.961H472.378C461.225 176.751 454.966 170.469 443.812 159.259V0H460.102C471.256 11.2095 477.506 17.4918 488.66 28.7013V187.922V187.961Z" fill="#4A5561"/>
+            <path d="M751.088 187.961H734.806C723.652 176.751 717.401 170.469 706.248 159.259V0H722.53L751.088 28.7013V187.922V187.961Z" fill="#4A5561"/>
+            <path d="M135.727 0H51.0982C31.1453 20.0533 19.9529 31.2628 0 51.3162V136.41C19.9529 156.463 31.1453 167.712 51.0982 187.765H135.766C155.719 167.712 166.911 156.463 186.864 136.41V51.3162C166.872 31.2628 155.68 20.0533 135.727 0ZM158.618 123.579C144.682 137.577 136.888 145.41 122.96 159.416H63.8728C49.9369 145.41 42.1428 137.577 28.2147 123.579V64.1942C42.1428 50.1882 49.9369 42.3548 63.8728 28.3567H122.96C136.888 42.3548 144.682 50.1882 158.618 64.1942V123.579Z" fill="#017E84"/>
+            <path d="M250.658 69.8185H232.21C226.692 75.3645 223.566 78.5056 218.048 84.0516V102.593C223.566 108.139 226.692 111.28 232.21 116.826H250.658C256.177 111.28 259.302 108.139 264.82 102.593V84.0516C259.302 78.5056 256.177 75.3645 250.658 69.8185Z" fill="#017E84"/>
+            <path d="M109.18 54.3007H77.9962C68.6199 63.7242 63.3666 69.0038 54.0293 78.3882V109.729C63.4056 119.153 68.6589 124.425 77.9962 133.817H109.18C118.557 124.393 123.802 119.114 133.147 109.729V78.3882C123.771 68.9647 118.518 63.685 109.18 54.3007Z" fill="#017E84"/>
           </svg>
         </div>
       </div>
@@ -490,11 +578,76 @@
 <script>
   // ── Plan definitions (workspaces are fixed; prices/cost are user inputs) ──
   const PLANS = [
-    { key: 'start', name: 'Старт',  users: 3,  inputId: 'inStart' },
-    { key: 'biz',   name: 'Бизнес', users: 6,  inputId: 'inBiz', featured: true },
-    { key: 'pro',   name: 'Про',    users: 10, inputId: 'inPro' }
+    { key: 'start', users: 3,  inputId: 'inStart' },
+    { key: 'biz',   users: 6,  inputId: 'inBiz', featured: true },
+    { key: 'pro',   users: 10, inputId: 'inPro' }
   ];
 
+  // ── Quick pricing presets ──
+  const PRESETS = {
+    annual:  { inStart: 79, inBiz: 145, inPro: 259 },
+    monthly: { inStart: 99, inBiz: 179, inPro: 299 }
+  };
+
+  // ── Translations: shares the "otizimLang" key with the main site ──
+  const T = {
+    ru: {
+      back: "На главную", badge: "Partner Portal · Unit Economics",
+      h1: "Калькулятор юнит-экономики",
+      lead: "Подберите цены и стоимость лицензии Odoo — и мгновенно увидите выручку, затраты, чистую прибыль и маржу по каждому тарифу.",
+      presetTitle: "Быстрые пресеты", presetAnnual: "Годовые цены", presetMonthly: "Месячные цены",
+      params: "Параметры", costLabel: "Базовая стоимость лицензии Odoo",
+      perUser: "/ польз. / мес", perMonth: "/ мес",
+      startLabel: "Тариф «Старт»", bizLabel: "Тариф «Бизнес»", proLabel: "Тариф «Про»",
+      seatsStart: "3 рабочих места", seatsBiz: "6 рабочих мест", seatsPro: "10 рабочих мест",
+      projLabel: "Период проекции", projMonthlyBtn: "За месяц", projAnnualBtn: "За год",
+      exportBtn: "Export as Image", exportHint: "PNG только с дашбордом · готово для презентации",
+      exportBusy: "Готовим изображение…",
+      projMonthly: "Месячная проекция", projAnnual: "Годовая проекция",
+      revenue: "Выручка", vendor: "Затраты (вендор)", profit: "Чистая прибыль", margin: "Маржа",
+      seatsShort: "мест", baseLicense: "Базовая лицензия", generated: "Сформировано",
+      perMonthWord: "/ мес", perYearWord: "/ год",
+      names: { start: "Старт", biz: "Бизнес", pro: "Про" }, locale: "ru-RU"
+    },
+    en: {
+      back: "Home", badge: "Partner Portal · Unit Economics",
+      h1: "Unit Economics Calculator",
+      lead: "Set the prices and the Odoo license cost — and instantly see revenue, costs, net profit and margin for each plan.",
+      presetTitle: "Quick presets", presetAnnual: "Annual pricing", presetMonthly: "Monthly pricing",
+      params: "Parameters", costLabel: "Base Odoo license cost",
+      perUser: "/ user / mo", perMonth: "/ mo",
+      startLabel: "Start plan", bizLabel: "Business plan", proLabel: "Pro plan",
+      seatsStart: "3 workspaces", seatsBiz: "6 workspaces", seatsPro: "10 workspaces",
+      projLabel: "Projection period", projMonthlyBtn: "Monthly", projAnnualBtn: "Annual",
+      exportBtn: "Export as Image", exportHint: "PNG of the dashboard only · presentation-ready",
+      exportBusy: "Preparing image…",
+      projMonthly: "Monthly projection", projAnnual: "Annual projection",
+      revenue: "Revenue", vendor: "Vendor cost", profit: "Net profit", margin: "Margin",
+      seatsShort: "seats", baseLicense: "Base license", generated: "Generated",
+      perMonthWord: "/ mo", perYearWord: "/ yr",
+      names: { start: "Start", biz: "Business", pro: "Pro" }, locale: "en-US"
+    },
+    uz: {
+      back: "Bosh sahifa", badge: "Hamkor portali · Unit Economics",
+      h1: "Yunit-iqtisodiyot kalkulyatori",
+      lead: "Narxlar va Odoo litsenziyasi narxini tanlang — har bir tarif bo'yicha daromad, xarajat, sof foyda va marjani darhol ko'ring.",
+      presetTitle: "Tezkor presetlar", presetAnnual: "Yillik narxlar", presetMonthly: "Oylik narxlar",
+      params: "Parametrlar", costLabel: "Odoo litsenziyasining bazaviy narxi",
+      perUser: "/ foydalanuvchi / oy", perMonth: "/ oy",
+      startLabel: "«Boshlang'ich» tarifi", bizLabel: "«Biznes» tarifi", proLabel: "«Pro» tarifi",
+      seatsStart: "3 ish o'rni", seatsBiz: "6 ish o'rni", seatsPro: "10 ish o'rni",
+      projLabel: "Proyeksiya davri", projMonthlyBtn: "Oylik", projAnnualBtn: "Yillik",
+      exportBtn: "Export as Image", exportHint: "Faqat dashboard PNG · taqdimotga tayyor",
+      exportBusy: "Rasm tayyorlanmoqda…",
+      projMonthly: "Oylik proyeksiya", projAnnual: "Yillik proyeksiya",
+      revenue: "Daromad", vendor: "Vendor xarajati", profit: "Sof foyda", margin: "Marja",
+      seatsShort: "o'rin", baseLicense: "Bazaviy litsenziya", generated: "Yaratildi",
+      perMonthWord: "/ oy", perYearWord: "/ yil",
+      names: { start: "Boshlang'ich", biz: "Biznes", pro: "Pro" }, locale: "uz-UZ"
+    }
+  };
+
+  let currentLang = (function () { try { return localStorage.getItem('otizimLang') || 'ru'; } catch (e) { return 'ru'; } })();
   let projection = 'monthly'; // 'monthly' | 'annual'
 
   const money0 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
@@ -505,16 +658,14 @@
   }
 
   function render() {
+    const t = T[currentLang] || T.ru;
     const cost = num('inCost');
     const months = projection === 'annual' ? 12 : 1;
-    const periodWord = projection === 'annual' ? '/ год' : '/ мес';
+    const periodWord = projection === 'annual' ? t.perYearWord : t.perMonthWord;
 
-    document.getElementById('projTag').textContent =
-      projection === 'annual' ? 'Годовая проекция' : 'Месячная проекция';
-    document.getElementById('footCost').textContent =
-      'Базовая лицензия: ' + money0.format(cost) + ' / польз. / мес';
-    document.getElementById('footDate').textContent =
-      'Сформировано: ' + new Date().toLocaleDateString('ru-RU');
+    document.getElementById('projTag').textContent = projection === 'annual' ? t.projAnnual : t.projMonthly;
+    document.getElementById('footCost').textContent = t.baseLicense + ': ' + money0.format(cost) + ' ' + t.perUser;
+    document.getElementById('footDate').textContent = t.generated + ': ' + new Date().toLocaleDateString(t.locale);
 
     const html = PLANS.map(p => {
       const price   = num(p.inputId);
@@ -525,23 +676,23 @@
       return `
         <div class="result-card${p.featured ? ' featured' : ''}">
           <div class="rc-head">
-            <span class="rc-name">${p.name}</span>
-            <span class="rc-users">${p.users} мест</span>
+            <span class="rc-name">${t.names[p.key]}</span>
+            <span class="rc-users">${p.users} ${t.seatsShort}</span>
           </div>
           <div class="metric">
-            <span class="m-label">Выручка ${periodWord}</span>
+            <span class="m-label">${t.revenue} ${periodWord}</span>
             <span class="m-val">${money0.format(revenue)}</span>
           </div>
           <div class="metric">
-            <span class="m-label">Затраты (вендор)</span>
+            <span class="m-label">${t.vendor}</span>
             <span class="m-val">${money0.format(vendor)}</span>
           </div>
           <div class="metric profit">
-            <span class="m-label">Чистая прибыль</span>
+            <span class="m-label">${t.profit}</span>
             <span class="m-val">${money0.format(profit)}</span>
           </div>
           <div class="metric margin">
-            <span class="m-label">Маржа</span>
+            <span class="m-label">${t.margin}</span>
             <span class="m-val">${margin.toFixed(1)}%</span>
           </div>
         </div>`;
@@ -550,12 +701,45 @@
     document.getElementById('resultCards').innerHTML = html;
   }
 
+  // ── Apply a language to all static labels, then re-render dynamic content ──
+  function applyLang(lang) {
+    if (!T[lang]) lang = 'ru';
+    currentLang = lang;
+    const t = T[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] != null) el.textContent = t[key];
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('#langSwitch button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('otizimLang', lang); } catch (e) {}
+    render();
+  }
+
+  document.querySelectorAll('#langSwitch button').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
   // ── Real-time recalculation ──
   ['inCost', 'inStart', 'inBiz', 'inPro'].forEach(id => {
     document.getElementById(id).addEventListener('input', render);
   });
 
-  // ── Projection segmented toggle ──
+  // ── Quick pricing presets (auto-fill plan prices) ──
+  document.querySelectorAll('#presets .preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = PRESETS[btn.dataset.preset];
+      document.getElementById('inStart').value = p.inStart;
+      document.getElementById('inBiz').value   = p.inBiz;
+      document.getElementById('inPro').value   = p.inPro;
+      document.querySelectorAll('#presets .preset').forEach(b => b.classList.toggle('active', b === btn));
+      render();
+    });
+  });
+
+  // ── Projection segmented toggle (monthly x1 / annual x12) ──
   const projSeg = document.getElementById('projSeg');
   projSeg.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -569,26 +753,27 @@
 
   // ── Export ONLY the results dashboard as a clean PNG ──
   const exportBtn = document.getElementById('exportBtn');
+  const exportLabel = document.getElementById('exportBtnLabel');
   exportBtn.addEventListener('click', async () => {
     if (typeof html2canvas !== 'function') {
-      alert('Библиотека экспорта ещё загружается. Повторите через секунду.');
+      alert('html2canvas is still loading. Please try again in a moment.');
       return;
     }
     const card = document.getElementById('exportCard');
-    const original = exportBtn.innerHTML;
+    const t = T[currentLang] || T.ru;
     exportBtn.disabled = true;
-    exportBtn.textContent = 'Готовим изображение…';
+    exportLabel.textContent = t.exportBusy;
 
     // Hide all chrome (.hide-on-export) so only the dashboard is captured
     document.body.classList.add('exporting');
 
     try {
-      // Wait one frame so the visibility change is applied before snapshot
+      // Wait two frames so the visibility change is applied before snapshot
       await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 
       const canvas = await html2canvas(card, {
-        backgroundColor: null,   // keep the card's own gradient, ignore page bg
-        scale: 2,                // crisp, presentation-ready
+        backgroundColor: '#ffffff', // clean white behind the light card (no transparent corners)
+        scale: 2,                   // crisp, presentation-ready
         useCORS: true,
         logging: false
       });
@@ -600,17 +785,17 @@
       link.click();
     } catch (err) {
       console.error(err);
-      alert('Не удалось создать изображение: ' + err.message);
+      alert('Image export failed: ' + err.message);
     } finally {
       // Always restore the UI immediately after the snapshot
       document.body.classList.remove('exporting');
       exportBtn.disabled = false;
-      exportBtn.innerHTML = original;
+      exportLabel.textContent = t.exportBtn;
     }
   });
 
-  // Initial paint
-  render();
+  // ── Initialize (applyLang also triggers the first render) ──
+  applyLang(currentLang);
 </script>
 
 </body>
