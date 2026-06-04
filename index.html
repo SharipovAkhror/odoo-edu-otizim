@@ -72,6 +72,41 @@
 
   .logo svg { width: 150px; height: auto; display: block; }
 
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    background: rgba(120,120,128,0.12);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .lang-switch button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    padding: 6px 13px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .lang-switch button:hover { color: var(--text); }
+
+  .lang-switch button.active {
+    background: #fff;
+    color: var(--brand);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.05);
+  }
+
   /* ── SECTIONS ── */
   section { position: relative; }
 
@@ -1001,6 +1036,28 @@
     font-weight: 500;
   }
 
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 100px;
+    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .footer-link:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .footer-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
   /* ── REVEAL ANIMATIONS ── */
   .reveal {
     opacity: 0;
@@ -1017,241 +1074,6 @@
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
-
-  /* ── ADMIN PROFITABILITY REPORT (INTERNAL) ── */
-  .profit-report {
-    padding: 100px 0;
-    background: #F4F6F8;
-    border-top: 1px solid var(--border);
-  }
-
-  .report-card {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-card);
-    padding: 40px;
-  }
-
-  .report-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-  }
-
-  .report-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    background: rgba(255,59,48,0.08);
-    color: #FF3B30;
-    border: 1px solid rgba(255,59,48,0.2);
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-
-  .report-title {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    line-height: 1.15;
-  }
-
-  .report-subtitle {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-top: 8px;
-    max-width: 560px;
-  }
-
-  .report-subtitle .ru {
-    display: block;
-    margin-top: 3px;
-    color: var(--text-tertiary);
-  }
-
-  .report-title-ru {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-top: 5px;
-  }
-
-  .kpi-label .ru,
-  .report-table th .ru {
-    display: block;
-    margin-top: 3px;
-    font-weight: 600;
-    font-size: 10px;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    color: var(--text-tertiary);
-  }
-
-  .report-badge .ru { text-transform: none; opacity: 0.85; }
-
-  .btn-export {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
-    background: var(--text);
-    color: #fff;
-    border: none;
-    border-radius: 100px;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .btn-export:hover { background: var(--brand); transform: translateY(-1px); }
-  .btn-export svg { width: 15px; height: 15px; flex-shrink: 0; }
-
-  .report-kpis {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .kpi {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 20px 22px;
-    background: #FBFCFD;
-  }
-
-  .kpi-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: 10px;
-  }
-
-  .kpi-value {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    line-height: 1;
-  }
-
-  .kpi-value.brand { color: var(--brand); }
-  .kpi-value .unit { font-size: 14px; font-weight: 600; color: var(--text-tertiary); }
-
-  .report-table-wrap { overflow-x: auto; }
-
-  .report-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .report-table th,
-  .report-table td {
-    text-align: right;
-    padding: 14px 16px;
-    font-size: 14px;
-    border-bottom: 1px solid var(--border);
-    white-space: nowrap;
-    color: var(--text-secondary);
-  }
-
-  .report-table th {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-  }
-
-  .report-table th:first-child,
-  .report-table td:first-child { text-align: left; }
-
-  .report-table tbody tr:hover { background: #FBFCFD; }
-
-  .report-plan { font-weight: 700; color: var(--text); }
-  .report-plan small {
-    display: block;
-    font-weight: 500;
-    font-size: 12px;
-    color: var(--text-tertiary);
-  }
-
-  .cell-profit { font-weight: 800; color: var(--brand); }
-  .cell-cost { color: #FF3B30; }
-
-  .margin-pill {
-    display: inline-block;
-    padding: 3px 11px;
-    border-radius: 100px;
-    background: var(--brand-dim);
-    color: var(--brand);
-    font-weight: 700;
-    font-size: 13px;
-  }
-
-  .report-table tfoot td {
-    border-top: 2px solid var(--border-strong);
-    border-bottom: none;
-    background: #FBFCFD;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .report-foot {
-    margin-top: 22px;
-    font-size: 12px;
-    color: var(--text-tertiary);
-    line-height: 1.7;
-  }
-
-  /* ── SCOPED PRINT: only the profitability report ── */
-  @media print {
-    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-    @page { size: A4 portrait; margin: 14mm; }
-
-    body > *:not(#profit-report) { display: none !important; }
-
-    #profit-report {
-      display: block !important;
-      padding: 0 !important;
-      background: #fff !important;
-      border: none !important;
-    }
-    #profit-report .container { padding: 0 !important; max-width: 100% !important; }
-    #profit-report .report-card {
-      box-shadow: none !important;
-      border: none !important;
-      border-radius: 0 !important;
-      padding: 0 !important;
-      max-width: 100% !important;
-    }
-    #profit-report .no-print { display: none !important; }
-    #profit-report .reveal { opacity: 1 !important; transform: none !important; }
-    #profit-report .report-table th,
-    #profit-report .report-table td { padding: 10px 10px; font-size: 12px; }
-    #profit-report .report-table tbody tr:hover,
-    #profit-report .report-table tfoot td { background: transparent !important; }
-    #profit-report .kpi { background: #fff !important; }
-  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
@@ -1270,9 +1092,6 @@
   @media (max-width: 600px) {
     .addons-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 24px; }
-    .report-kpis { grid-template-columns: 1fr; }
-    .report-card { padding: 24px; }
-    .btn-export { width: 100%; justify-content: center; }
   }
 </style>
 </head>
@@ -1300,6 +1119,11 @@
         </defs>
       </svg>
     </div>
+    <div class="lang-switch" id="langSwitch" role="group" aria-label="Language / Язык / Til">
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="uz">UZ</button>
+    </div>
   </div>
 </header>
 
@@ -1310,40 +1134,40 @@
   <div class="container">
     <div class="hero-tag reveal">
       <span class="dot"></span>
-      ERP для образования
+      <span data-i18n="hero.tag">ERP для образования</span>
     </div>
-    <h1 class="reveal reveal-delay-1">
+    <h1 class="reveal reveal-delay-1" data-i18n="hero.h1">
       Безлимитное количество<br>
       <em>учеников</em>,<br>по фиксированной цене.
     </h1>
-    <p class="hero-sub reveal reveal-delay-2">
+    <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">
       ERP-система нового поколения для образовательного бизнеса. Безлимит учеников, интеграция с локальными платежками и полная защита от кассовых разрывов.
     </p>
     <div class="hero-actions reveal reveal-delay-3">
       <a href="#pricing" class="btn-primary">
-        Попробовать демо
+        <span data-i18n="hero.btnPrimary">Попробовать демо</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#pricing" class="btn-secondary">
+      <a href="#pricing" class="btn-secondary" data-i18n="hero.btnSecondary">
         Рассчитать внедрение
       </a>
     </div>
     <div class="hero-stats reveal reveal-delay-4">
       <div class="hero-stat">
-        <span class="hero-stat-num">3 дня</span>
-        <span class="hero-stat-label">до полного запуска</span>
+        <span class="hero-stat-num" data-i18n="hero.stat1num">3 дня</span>
+        <span class="hero-stat-label" data-i18n="hero.stat1label">до полного запуска</span>
       </div>
       <div class="hero-stat">
         <span class="hero-stat-num">∞</span>
-        <span class="hero-stat-label">учеников без доп. оплаты</span>
+        <span class="hero-stat-label" data-i18n="hero.stat2label">учеников без доп. оплаты</span>
       </div>
       <div class="hero-stat">
         <span class="hero-stat-num">$79</span>
-        <span class="hero-stat-label">старт в месяц</span>
+        <span class="hero-stat-label" data-i18n="hero.stat3label">старт в месяц</span>
       </div>
       <div class="hero-stat">
         <span class="hero-stat-num">24/7</span>
-        <span class="hero-stat-label">поддержка через Telegram</span>
+        <span class="hero-stat-label" data-i18n="hero.stat4label">поддержка через Telegram</span>
       </div>
     </div>
   </div>
@@ -1353,28 +1177,28 @@
 <section class="process" id="process">
   <div class="container">
     <div class="process-header">
-      <div class="section-label reveal">Внедрение</div>
-      <h2 class="section-title reveal reveal-delay-1">Безболезненный старт<br>за 3 дня</h2>
-      <p class="section-sub reveal reveal-delay-2">Без долгих интеграций и ИТ-отдела. Мы берём всё на себя.</p>
+      <div class="section-label reveal" data-i18n="process.label">Внедрение</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="process.title">Безболезненный старт<br>за 3 дня</h2>
+      <p class="section-sub reveal reveal-delay-2" data-i18n="process.sub">Без долгих интеграций и ИТ-отдела. Мы берём всё на себя.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card reveal">
         <div class="step-num">1</div>
-        <div class="step-day">День 1</div>
-        <h3>Сбор данных</h3>
-        <p>Выдаём удобный Excel-шаблон. Вы просто вносите списки учеников — никаких сложных форматов.</p>
+        <div class="step-day" data-i18n="process.s1day">День 1</div>
+        <h3 data-i18n="process.s1title">Сбор данных</h3>
+        <p data-i18n="process.s1text">Выдаём удобный Excel-шаблон. Вы просто вносите списки учеников — никаких сложных форматов.</p>
       </div>
       <div class="step-card reveal reveal-delay-1">
         <div class="step-num">2</div>
-        <div class="step-day">День 2–3</div>
-        <h3>Развёртывание базы</h3>
-        <p>Поднимаем защищённые облачные серверы и импортируем ваши данные. Всё под ключ.</p>
+        <div class="step-day" data-i18n="process.s2day">День 2–3</div>
+        <h3 data-i18n="process.s2title">Развёртывание базы</h3>
+        <p data-i18n="process.s2text">Поднимаем защищённые облачные серверы и импортируем ваши данные. Всё под ключ.</p>
       </div>
       <div class="step-card reveal reveal-delay-2">
         <div class="step-num" style="background: var(--brand); color: #fff; border-color: var(--brand);">✓</div>
-        <div class="step-day">Старт</div>
-        <h3>Сопровождение</h3>
-        <p>Бесплатная помощь на старте, встроенные видеоуроки и техническая поддержка через тикеты в Telegram.</p>
+        <div class="step-day" data-i18n="process.s3day">Старт</div>
+        <h3 data-i18n="process.s3title">Сопровождение</h3>
+        <p data-i18n="process.s3text">Бесплатная помощь на старте, встроенные видеоуроки и техническая поддержка через тикеты в Telegram.</p>
       </div>
     </div>
   </div>
@@ -1384,8 +1208,8 @@
 <section class="advantages" id="advantages">
   <div class="container">
     <div class="advantages-header">
-      <div class="section-label reveal">Преимущества</div>
-      <h2 class="section-title reveal reveal-delay-1">Решаем реальные проблемы<br>учебных центров</h2>
+      <div class="section-label reveal" data-i18n="adv.label">Преимущества</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="adv.title">Решаем реальные проблемы<br>учебных центров</h2>
     </div>
     <div class="bento">
 
@@ -1395,12 +1219,12 @@
         <div class="bento-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
         </div>
-        <div class="problem-tag issue">Проблема</div>
-        <h3>Кассовые разрывы<br>и теневые платежи</h3>
-        <p>Оплаты наличными или на карту сложно контролировать. Чеки теряются, данные расходятся.</p>
+        <div class="problem-tag issue" data-i18n="adv.issue">Проблема</div>
+        <h3 data-i18n="adv.c1h">Кассовые разрывы<br>и теневые платежи</h3>
+        <p data-i18n="adv.c1p1">Оплаты наличными или на карту сложно контролировать. Чеки теряются, данные расходятся.</p>
         <div class="bento-divider"></div>
-        <div class="problem-tag solve">Решение Otizim</div>
-        <p>Неизменяемый аудит. Администратор проводит платёж, но не может удалить его задним числом. Нативная интеграция с Click, Payme, Uzum.</p>
+        <div class="problem-tag solve" data-i18n="adv.solve">Решение Otizim</div>
+        <p data-i18n="adv.c1p2">Неизменяемый аудит. Администратор проводит платёж, но не может удалить его задним числом. Нативная интеграция с Click, Payme, Uzum.</p>
       </div>
 
       <!-- Card 2: Narrow — FaceID -->
@@ -1408,12 +1232,12 @@
         <div class="bento-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         </div>
-        <div class="problem-tag issue">Проблема</div>
-        <h3>Иллюзия контроля<br>турникетов и FaceID</h3>
-        <p>Студент оплатил один дешёвый курс, а FaceID пропускает его на все предметы.</p>
+        <div class="problem-tag issue" data-i18n="adv.issue">Проблема</div>
+        <h3 data-i18n="adv.c2h">Иллюзия контроля<br>турникетов и FaceID</h3>
+        <p data-i18n="adv.c2p1">Студент оплатил один дешёвый курс, а FaceID пропускает его на все предметы.</p>
         <div class="bento-divider"></div>
-        <div class="problem-tag solve">Решение Otizim</div>
-        <p>Умная сквозная проверка. База точно знает, куда идёт ученик, и блокирует доступ, если подписка истекла.</p>
+        <div class="problem-tag solve" data-i18n="adv.solve">Решение Otizim</div>
+        <p data-i18n="adv.c2p2">Умная сквозная проверка. База точно знает, куда идёт ученик, и блокирует доступ, если подписка истекла.</p>
       </div>
 
       <!-- Card 3: Narrow — Leads -->
@@ -1421,12 +1245,12 @@
         <div class="bento-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <div class="problem-tag issue">Проблема</div>
-        <h3>Потерянные лиды</h3>
-        <p>Студент пришёл на пробный урок, ушёл «подумать» — и о нём забыли навсегда.</p>
+        <div class="problem-tag issue" data-i18n="adv.issue">Проблема</div>
+        <h3 data-i18n="adv.c3h">Потерянные лиды</h3>
+        <p data-i18n="adv.c3p1">Студент пришёл на пробный урок, ушёл «подумать» — и о нём забыли навсегда.</p>
         <div class="bento-divider"></div>
-        <div class="problem-tag solve">Решение Otizim</div>
-        <p>Автоматическая воронка. CRM сама ставит задачу менеджеру перезвонить клиенту в нужное время.</p>
+        <div class="problem-tag solve" data-i18n="adv.solve">Решение Otizim</div>
+        <p data-i18n="adv.c3p2">Автоматическая воронка. CRM сама ставит задачу менеджеру перезвонить клиенту в нужное время.</p>
       </div>
 
       <!-- Card 4: Wide — Telegram -->
@@ -1435,17 +1259,17 @@
         <div class="bento-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 5.1L18.6 19.3c-.2 1-.8 1.2-1.6.8L12.5 17l-2.2 2.1c-.2.3-.5.4-.9.4l.3-4.5 8.3-7.5c.4-.3-.1-.5-.6-.2L5.5 14.1 1.2 12.8c-.9-.3-.9-.9.2-1.3L20 4c.8-.3 1.5.2 1.2 1.1z"/></svg>
         </div>
-        <div class="problem-tag issue">Проблема</div>
-        <h3>Родители не хотят<br>скачивать новые приложения</h3>
-        <p>Сложные кабинеты и незнакомые приложения снижают вовлечённость.</p>
+        <div class="problem-tag issue" data-i18n="adv.issue">Проблема</div>
+        <h3 data-i18n="adv.c4h">Родители не хотят<br>скачивать новые приложения</h3>
+        <p data-i18n="adv.c4p1">Сложные кабинеты и незнакомые приложения снижают вовлечённость.</p>
         <div class="bento-divider"></div>
-        <div class="problem-tag solve">Решение Otizim</div>
-        <p>Все уведомления об уроках, долгах и ссылки на оплату приходят прямо в привычный Telegram-бот. Никаких новых установок.</p>
+        <div class="problem-tag solve" data-i18n="adv.solve">Решение Otizim</div>
+        <p data-i18n="adv.c4p2">Все уведомления об уроках, долгах и ссылки на оплату приходят прямо в привычный Telegram-бот. Никаких новых установок.</p>
         <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px;">
-          <span class="bento-chip">Telegram-бот</span>
-          <span class="bento-chip">SMS-уведомления</span>
-          <span class="bento-chip">Долги и оплата</span>
-          <span class="bento-chip">Расписание</span>
+          <span class="bento-chip" data-i18n="adv.chip1">Telegram-бот</span>
+          <span class="bento-chip" data-i18n="adv.chip2">SMS-уведомления</span>
+          <span class="bento-chip" data-i18n="adv.chip3">Долги и оплата</span>
+          <span class="bento-chip" data-i18n="adv.chip4">Расписание</span>
         </div>
       </div>
 
@@ -1457,23 +1281,23 @@
 <section class="pricing" id="pricing">
   <div class="container">
     <div class="pricing-header">
-      <div class="section-label reveal">Тарифы</div>
-      <h2 class="section-title reveal reveal-delay-1">Прозрачные цены<br>без скрытых сборов</h2>
+      <div class="section-label reveal" data-i18n="pricing.label">Тарифы</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="pricing.title">Прозрачные цены<br>без скрытых сборов</h2>
     </div>
     <div class="pricing-note reveal reveal-delay-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      <span>Портал для учеников — <strong>безлимитно</strong>. Вы платите только за внутренние аккаунты.</span>
+      <span data-i18n="pricing.note">Портал для учеников — <strong>безлимитно</strong>. Вы платите только за внутренние аккаунты.</span>
     </div>
 
     <div class="billing-toggle-wrap reveal reveal-delay-2">
       <div class="billing-switch" id="billingSwitch" role="tablist" aria-label="Период оплаты">
         <span class="billing-thumb" aria-hidden="true"></span>
-        <button class="billing-opt active" data-mode="annual" role="tab" aria-selected="true">Оплата за год</button>
-        <button class="billing-opt" data-mode="monthly" role="tab" aria-selected="false">Помесячно</button>
+        <button class="billing-opt active" data-mode="annual" role="tab" aria-selected="true" data-i18n="billing.annual">Оплата за год</button>
+        <button class="billing-opt" data-mode="monthly" role="tab" aria-selected="false" data-i18n="billing.monthly">Помесячно</button>
       </div>
       <div class="billing-save">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        <span>Выгода до <strong>20%</strong> при оплате за год</span>
+        <span data-i18n="billing.save">Выгода до <strong>20%</strong> при оплате за год</span>
       </div>
     </div>
 
@@ -1481,174 +1305,174 @@
 
       <!-- СТАРТ -->
       <div class="plan-card reveal">
-        <div class="plan-name">Старт</div>
+        <div class="plan-name" data-i18n="plan.startName">Старт</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
           <span class="plan-price-amount" data-annual="79" data-monthly="99">79</span>
         </div>
-        <div class="plan-price-period">в месяц</div>
+        <div class="plan-price-period" data-i18n="plan.period">в месяц</div>
         <div class="plan-billing-note">при оплате за год</div>
-        <div class="plan-desc" style="margin-top: 12px;">Идеально для запуска небольшого учебного центра или репетиторства.</div>
+        <div class="plan-desc" style="margin-top: 12px;" data-i18n="plan.startDesc">Идеально для запуска небольшого учебного центра или репетиторства.</div>
         <div class="plan-divider"></div>
 
-        <div class="plan-feature-label">Команда</div>
+        <div class="plan-feature-label" data-i18n="plan.teamLabel">Команда</div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          3 рабочих места
+          <span data-i18n="plan.start.seats">3 рабочих места</span>
         </div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          Доп. место — $25/мес
+          <span data-i18n="plan.start.extra">Доп. место — $25/мес</span>
         </div>
 
-        <div class="plan-feature-label">Функционал</div>
+        <div class="plan-feature-label" data-i18n="plan.funcLabel">Функционал</div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          CRM, расписание, касса
+          <span data-i18n="plan.start.f1">CRM, расписание, касса</span>
         </div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          Портал ученика
+          <span data-i18n="plan.start.f2">Портал ученика</span>
         </div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          Шлюзы Click / Payme
+          <span data-i18n="plan.start.f3">Шлюзы Click / Payme</span>
         </div>
         <div class="plan-feature" style="color: var(--text-tertiary);">
           <div class="plan-feature-icon" style="background: rgba(0,0,0,0.04);">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l4 4M6 2l-4 4"/></svg>
           </div>
-          Авторасчёт ЗП и склад — нет
+          <span data-i18n="plan.start.f4">Авторасчёт ЗП и склад — нет</span>
         </div>
 
-        <a href="#" class="plan-cta">Выбрать Старт</a>
+        <a href="#" class="plan-cta" data-i18n="plan.start.cta">Выбрать Старт</a>
       </div>
 
       <!-- БИЗНЕС -->
       <div class="plan-card featured reveal reveal-delay-1">
-        <div class="plan-badge">Популярный</div>
-        <div class="plan-name" style="color: var(--brand);">Бизнес</div>
+        <div class="plan-badge" data-i18n="plan.popular">Популярный</div>
+        <div class="plan-name" style="color: var(--brand);" data-i18n="plan.bizName">Бизнес</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
           <span class="plan-price-amount" data-annual="145" data-monthly="179">145</span>
         </div>
-        <div class="plan-price-period">в месяц</div>
+        <div class="plan-price-period" data-i18n="plan.period">в месяц</div>
         <div class="plan-billing-note">при оплате за год</div>
-        <div class="plan-desc" style="margin-top: 12px;">Для растущих центров с несколькими преподавателями и расширенной аналитикой.</div>
+        <div class="plan-desc" style="margin-top: 12px;" data-i18n="plan.bizDesc">Для растущих центров с несколькими преподавателями и расширенной аналитикой.</div>
         <div class="plan-divider"></div>
 
-        <div class="plan-feature-label">Команда</div>
+        <div class="plan-feature-label" data-i18n="plan.teamLabel">Команда</div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          6 рабочих мест
+          <span data-i18n="plan.biz.seats">6 рабочих мест</span>
         </div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          Доп. место — $22/мес
-        </div>
-
-        <div class="plan-feature-label">Функционал</div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          Всё из тарифа «Старт»
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          Авторасчёт заработной платы
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          Складской учёт
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          Финансовая аналитика
+          <span data-i18n="plan.biz.extra">Доп. место — $22/мес</span>
         </div>
 
-        <a href="#" class="plan-cta">Выбрать Бизнес</a>
+        <div class="plan-feature-label" data-i18n="plan.funcLabel">Функционал</div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.biz.f1">Всё из тарифа «Старт»</span>
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.biz.f2">Авторасчёт заработной платы</span>
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.biz.f3">Складской учёт</span>
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.biz.f4">Финансовая аналитика</span>
+        </div>
+
+        <a href="#" class="plan-cta" data-i18n="plan.biz.cta">Выбрать Бизнес</a>
       </div>
 
       <!-- ПРО -->
       <div class="plan-card reveal reveal-delay-2">
-        <div class="plan-name">Про</div>
+        <div class="plan-name" data-i18n="plan.proName">Про</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
           <span class="plan-price-amount" data-annual="259" data-monthly="299">259</span>
         </div>
-        <div class="plan-price-period">в месяц</div>
+        <div class="plan-price-period" data-i18n="plan.period">в месяц</div>
         <div class="plan-billing-note">при оплате за год</div>
-        <div class="plan-desc" style="margin-top: 12px;">Для сетей учебных центров с несколькими филиалами и полной автоматизацией.</div>
+        <div class="plan-desc" style="margin-top: 12px;" data-i18n="plan.proDesc">Для сетей учебных центров с несколькими филиалами и полной автоматизацией.</div>
         <div class="plan-divider"></div>
 
-        <div class="plan-feature-label">Команда</div>
+        <div class="plan-feature-label" data-i18n="plan.teamLabel">Команда</div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          10 рабочих мест
+          <span data-i18n="plan.pro.seats">10 рабочих мест</span>
         </div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
-          Доп. место — $20/мес
-        </div>
-
-        <div class="plan-feature-label">Функционал</div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          Всё из тарифа «Бизнес»
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          Мультифилиальность
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          P&amp;L аналитика
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          IP-телефония
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          HR-модуль
+          <span data-i18n="plan.pro.extra">Доп. место — $20/мес</span>
         </div>
 
-        <a href="#" class="plan-cta">Выбрать Про</a>
+        <div class="plan-feature-label" data-i18n="plan.funcLabel">Функционал</div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.pro.f1">Всё из тарифа «Бизнес»</span>
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.pro.f2">Мультифилиальность</span>
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.pro.f3">P&amp;L аналитика</span>
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.pro.f4">IP-телефония</span>
+        </div>
+        <div class="plan-feature">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
+          </div>
+          <span data-i18n="plan.pro.f5">HR-модуль</span>
+        </div>
+
+        <a href="#" class="plan-cta" data-i18n="plan.pro.cta">Выбрать Про</a>
       </div>
 
     </div>
@@ -1659,25 +1483,25 @@
 <section class="addons" id="addons">
   <div class="container">
     <div class="addons-header">
-      <div class="section-label reveal">Расширение</div>
-      <h2 class="section-title reveal reveal-delay-1">Дополнительные модули</h2>
-      <p class="section-sub reveal reveal-delay-2">Подключите нужные инструменты к любому тарифу.</p>
+      <div class="section-label reveal" data-i18n="addons.label">Расширение</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="addons.title">Дополнительные модули</h2>
+      <p class="section-sub reveal reveal-delay-2" data-i18n="addons.sub">Подключите нужные инструменты к любому тарифу.</p>
     </div>
     <div class="addons-grid">
       <div class="addon-card reveal">
-        <div class="addon-price">+$10<span>/мес</span></div>
-        <div class="addon-name">Telegram &amp; SMS шлюз</div>
-        <div class="addon-desc">Рассылки и уведомления через Eskiz. Долги, расписание, напоминания об оплате.</div>
+        <div class="addon-price">+$10<span data-i18n="addons.per">/мес</span></div>
+        <div class="addon-name" data-i18n="addons.a1name">Telegram &amp; SMS шлюз</div>
+        <div class="addon-desc" data-i18n="addons.a1desc">Рассылки и уведомления через Eskiz. Долги, расписание, напоминания об оплате.</div>
       </div>
       <div class="addon-card reveal reveal-delay-1">
-        <div class="addon-price">+$15<span>/мес</span></div>
-        <div class="addon-name">LMS-кабинет</div>
-        <div class="addon-desc">Тесты, видеоуроки и домашние задания. Полноценная цифровая образовательная среда.</div>
+        <div class="addon-price">+$15<span data-i18n="addons.per">/мес</span></div>
+        <div class="addon-name" data-i18n="addons.a2name">LMS-кабинет</div>
+        <div class="addon-desc" data-i18n="addons.a2desc">Тесты, видеоуроки и домашние задания. Полноценная цифровая образовательная среда.</div>
       </div>
       <div class="addon-card reveal reveal-delay-2">
-        <div class="addon-price">+$10<span>/мес</span></div>
-        <div class="addon-name">E-commerce магазин</div>
-        <div class="addon-desc">Продавайте курсы и материалы онлайн. Интеграция с платёжными шлюзами.</div>
+        <div class="addon-price">+$10<span data-i18n="addons.per">/мес</span></div>
+        <div class="addon-name" data-i18n="addons.a3name">E-commerce магазин</div>
+        <div class="addon-desc" data-i18n="addons.a3desc">Продавайте курсы и материалы онлайн. Интеграция с платёжными шлюзами.</div>
       </div>
     </div>
   </div>
@@ -1687,36 +1511,36 @@
 <section class="faq" id="faq">
   <div class="container">
     <div class="faq-header">
-      <div class="section-label reveal">FAQ</div>
-      <h2 class="section-title reveal reveal-delay-1">Частые вопросы</h2>
+      <div class="section-label reveal" data-i18n="faq.label">FAQ</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="faq.title">Частые вопросы</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item reveal">
         <button class="faq-q">
-          Где хранятся наши данные?
+          <span data-i18n="faq.q1">Где хранятся наши данные?</span>
           <div class="faq-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </div>
         </button>
-        <div class="faq-a">На надёжных изолированных облачных серверах с регулярным резервным копированием. Ваши данные защищены и недоступны третьим лицам.</div>
+        <div class="faq-a" data-i18n="faq.a1">На надёжных изолированных облачных серверах с регулярным резервным копированием. Ваши данные защищены и недоступны третьим лицам.</div>
       </div>
       <div class="faq-item reveal reveal-delay-1">
         <button class="faq-q">
-          Можно ли выгрузить свою базу?
+          <span data-i18n="faq.q2">Можно ли выгрузить свою базу?</span>
           <div class="faq-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </div>
         </button>
-        <div class="faq-a">Да, в любой момент. Данные принадлежат только вам — вы можете выгрузить их в Excel в один клик. Никакой зависимости от платформы.</div>
+        <div class="faq-a" data-i18n="faq.a2">Да, в любой момент. Данные принадлежат только вам — вы можете выгрузить их в Excel в один клик. Никакой зависимости от платформы.</div>
       </div>
       <div class="faq-item reveal reveal-delay-2">
         <button class="faq-q">
-          Сложно ли обучить сотрудников?
+          <span data-i18n="faq.q3">Сложно ли обучить сотрудников?</span>
           <div class="faq-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </div>
         </button>
-        <div class="faq-a">В базу встроен модуль e-learning с пошаговыми инструкциями. Интерфейс интуитивен и защищён от случайных ошибок — большинство сотрудников осваивают систему за первый рабочий день.</div>
+        <div class="faq-a" data-i18n="faq.a3">В базу встроен модуль e-learning с пошаговыми инструкциями. Интерфейс интуитивен и защищён от случайных ошибок — большинство сотрудников осваивают систему за первый рабочий день.</div>
       </div>
     </div>
   </div>
@@ -1726,10 +1550,10 @@
 <section class="footer-cta">
   <div class="footer-cta-bg"></div>
   <div class="container">
-    <h2>Готовы оцифровать<br>ваш учебный центр?</h2>
-    <p>3 дня бесплатного демо. Настройка под ключ. Поддержка 24/7.</p>
+    <h2 data-i18n="cta.title">Готовы оцифровать<br>ваш учебный центр?</h2>
+    <p data-i18n="cta.sub">3 дня бесплатного демо. Настройка под ключ. Поддержка 24/7.</p>
     <a href="#pricing" class="btn-primary" style="font-size: 16px; padding: 16px 32px;">
-      Начать бесплатно
+      <span data-i18n="cta.btn">Начать бесплатно</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -1751,110 +1575,12 @@
       <defs><clipPath id="clip0_footer"><rect width="1007" height="188" fill="white"/></clipPath></defs>
     </svg>
   </div>
-  <p>© 2026 O-tizim. Odoo Education. Все права защищены.</p>
+  <a class="footer-link" href="calculator.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+    <span data-i18n="footer.calc">Юнит-экономика</span>
+  </a>
+  <p data-i18n="footer.copy">© 2026 O-tizim. Odoo Education. Все права защищены.</p>
 </footer>
-
-<!-- ── ADMIN PROFITABILITY REPORT (INTERNAL USE ONLY) ── -->
-<section class="profit-report" id="profit-report">
-  <div class="container">
-    <div class="report-card reveal">
-      <div class="report-head">
-        <div>
-          <span class="report-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Internal Use Only&nbsp;<span class="ru">· Для служебного пользования</span>
-          </span>
-          <h2 class="report-title">Admin Profitability Report</h2>
-          <div class="report-title-ru">Отчёт по прибыльности для руководства</div>
-          <p class="report-subtitle">Unit economics based on annual billing. Vendor license cost: $15 / user / month.<span class="ru">Юнит-экономика при годовой оплате. Стоимость лицензии вендора — $15 / пользователь / мес.</span></p>
-        </div>
-        <button class="btn-export no-print" id="exportReportBtn" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-          Export Report to PDF / Экспорт в PDF
-        </button>
-      </div>
-
-      <div class="report-kpis">
-        <div class="kpi">
-          <div class="kpi-label">Base Cost / User<span class="ru">Базовая стоимость / польз.</span></div>
-          <div class="kpi-value">$15<span class="unit"> /mo</span></div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label">Avg. Net Margin<span class="ru">Средняя чистая маржа</span></div>
-          <div class="kpi-value brand">41%</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label">Avg. Profit / User<span class="ru">Средняя прибыль / польз.</span></div>
-          <div class="kpi-value">$10.4<span class="unit"> /mo</span></div>
-        </div>
-      </div>
-
-      <div class="report-table-wrap">
-        <table class="report-table">
-          <thead>
-            <tr>
-              <th>Plan<span class="ru">Тариф</span></th>
-              <th>Workspaces<span class="ru">Рабочие места</span></th>
-              <th>Revenue /mo<span class="ru">Выручка /мес</span></th>
-              <th>Vendor Cost<span class="ru">Затраты вендора</span></th>
-              <th>Net Profit /mo<span class="ru">Чистая прибыль /мес</span></th>
-              <th>Profit / User<span class="ru">Прибыль / польз.</span></th>
-              <th>Margin<span class="ru">Маржа</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="report-plan">Start <small>Годовая оплата</small></td>
-              <td>3</td>
-              <td>$79</td>
-              <td class="cell-cost">$45</td>
-              <td class="cell-profit">$34</td>
-              <td>$11.3</td>
-              <td><span class="margin-pill">43%</span></td>
-            </tr>
-            <tr>
-              <td class="report-plan">Business <small>Годовая оплата</small></td>
-              <td>6</td>
-              <td>$145</td>
-              <td class="cell-cost">$90</td>
-              <td class="cell-profit">$55</td>
-              <td>$9.1</td>
-              <td><span class="margin-pill">38%</span></td>
-            </tr>
-            <tr>
-              <td class="report-plan">Pro <small>Годовая оплата</small></td>
-              <td>10</td>
-              <td>$259</td>
-              <td class="cell-cost">$150</td>
-              <td class="cell-profit">$109</td>
-              <td>$10.9</td>
-              <td><span class="margin-pill">42%</span></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td class="report-plan">Combined <small>Итого · 1&times; каждый тариф</small></td>
-              <td>19</td>
-              <td>$483</td>
-              <td class="cell-cost">$285</td>
-              <td class="cell-profit">$198</td>
-              <td>$10.4</td>
-              <td><span class="margin-pill">41%</span></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-
-      <p class="report-foot">
-        Vendor Cost = Workspaces &times; $15 (Odoo vendor license). Net Profit = Monthly Revenue &minus; Vendor Cost.
-        Profit per User = Net Profit &divide; Workspaces. All figures reflect annual-billing pricing and are intended for internal management review only.
-        <br><br>
-        <span lang="ru">Затраты вендора = Рабочие места &times; $15 (лицензия Odoo). Чистая прибыль = Выручка в месяц &minus; Затраты вендора.
-        Прибыль на пользователя = Чистая прибыль &divide; Рабочие места. Все значения приведены для годовой оплаты и предназначены только для внутреннего использования руководством.</span>
-      </p>
-    </div>
-  </div>
-</section>
 
 <script>
   // ── Sticky Header ──
@@ -1864,7 +1590,6 @@
   }, { passive: true });
 
   // ── Scroll Reveal (Intersection Observer) ──
-  const revealEls = document.querySelectorAll('.reveal');
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1873,8 +1598,7 @@
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  revealEls.forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
   // Hero elements visible on load
   document.querySelectorAll('.hero .reveal').forEach((el, i) => {
@@ -1894,7 +1618,9 @@
   // ── Smooth anchor scroll ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
+      const href = a.getAttribute('href');
+      if (!href || href.length <= 1) return; // ignore bare "#"
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1902,17 +1628,226 @@
     });
   });
 
-  // ── Pricing Billing Toggle (Monthly / Annually) ──
+  // ── i18n: RU is the in-markup default; EN + UZ provided below ──
+  const I18N = {
+    en: {
+      "hero.tag": "ERP for education",
+      "hero.h1": "An unlimited number of<br><em>students</em>,<br>at a fixed price.",
+      "hero.sub": "A new-generation ERP for the education business. Unlimited students, integration with local payment systems and full protection from cash-flow gaps.",
+      "hero.btnPrimary": "Try the demo",
+      "hero.btnSecondary": "Estimate rollout",
+      "hero.stat1num": "3 days", "hero.stat1label": "to full launch",
+      "hero.stat2label": "students at no extra cost",
+      "hero.stat3label": "starting per month",
+      "hero.stat4label": "support via Telegram",
+      "process.label": "Onboarding",
+      "process.title": "A painless start<br>in 3 days",
+      "process.sub": "No lengthy integrations or IT department. We handle everything.",
+      "process.s1day": "Day 1", "process.s1title": "Data collection",
+      "process.s1text": "We provide a convenient Excel template. You simply enter the student lists — no complex formats.",
+      "process.s2day": "Day 2-3", "process.s2title": "System deployment",
+      "process.s2text": "We set up secure cloud servers and import your data. Fully turnkey.",
+      "process.s3day": "Launch", "process.s3title": "Support",
+      "process.s3text": "Free help at launch, built-in video lessons and technical support via Telegram tickets.",
+      "adv.label": "Advantages",
+      "adv.title": "We solve real problems<br>of education centers",
+      "adv.issue": "Problem", "adv.solve": "Otizim solution",
+      "adv.c1h": "Cash gaps<br>and shadow payments",
+      "adv.c1p1": "Cash or card payments are hard to control. Receipts get lost and the numbers stop matching.",
+      "adv.c1p2": "An immutable audit trail. An admin records a payment but cannot delete it retroactively. Native integration with Click, Payme, Uzum.",
+      "adv.c2h": "The illusion of control<br>with turnstiles and FaceID",
+      "adv.c2p1": "A student paid for one cheap course, yet FaceID lets them into every subject.",
+      "adv.c2p2": "Smart end-to-end checks. The system knows exactly where a student is headed and blocks access if the subscription has expired.",
+      "adv.c3h": "Lost leads",
+      "adv.c3p1": "A student came for a trial lesson, left to think it over — and was forgotten forever.",
+      "adv.c3p2": "An automatic funnel. The CRM assigns the manager a task to call the client back at the right time.",
+      "adv.c4h": "Parents don't want<br>to download new apps",
+      "adv.c4p1": "Complex portals and unfamiliar apps reduce engagement.",
+      "adv.c4p2": "All notifications about lessons, debts and payment links arrive right in the familiar Telegram bot. No new installs.",
+      "adv.chip1": "Telegram bot", "adv.chip2": "SMS notifications",
+      "adv.chip3": "Debts & payments", "adv.chip4": "Schedule",
+      "pricing.label": "Pricing",
+      "pricing.title": "Transparent pricing<br>with no hidden fees",
+      "pricing.note": "Student portal — <strong>unlimited</strong>. You only pay for internal accounts.",
+      "billing.annual": "Annual billing", "billing.monthly": "Monthly",
+      "billing.save": "Save up to <strong>20%</strong> with annual billing",
+      "plan.period": "per month", "plan.popular": "Popular",
+      "plan.teamLabel": "Team", "plan.funcLabel": "Features",
+      "plan.startName": "Start",
+      "plan.startDesc": "Perfect for launching a small education center or private tutoring.",
+      "plan.start.seats": "3 workspaces", "plan.start.extra": "Extra seat — $25/mo",
+      "plan.start.f1": "CRM, scheduling, POS", "plan.start.f2": "Student portal",
+      "plan.start.f3": "Click / Payme gateways", "plan.start.f4": "Payroll & inventory — not included",
+      "plan.start.cta": "Choose Start",
+      "plan.bizName": "Business",
+      "plan.bizDesc": "For growing centers with several teachers and advanced analytics.",
+      "plan.biz.seats": "6 workspaces", "plan.biz.extra": "Extra seat — $22/mo",
+      "plan.biz.f1": "Everything in Start", "plan.biz.f2": "Automated payroll",
+      "plan.biz.f3": "Inventory management", "plan.biz.f4": "Financial analytics",
+      "plan.biz.cta": "Choose Business",
+      "plan.proName": "Pro",
+      "plan.proDesc": "For networks of education centers with multiple branches and full automation.",
+      "plan.pro.seats": "10 workspaces", "plan.pro.extra": "Extra seat — $20/mo",
+      "plan.pro.f1": "Everything in Business", "plan.pro.f2": "Multi-branch support",
+      "plan.pro.f3": "P&amp;L analytics", "plan.pro.f4": "IP telephony", "plan.pro.f5": "HR module",
+      "plan.pro.cta": "Choose Pro",
+      "addons.label": "Add-ons", "addons.title": "Additional modules",
+      "addons.sub": "Connect the tools you need to any plan.", "addons.per": "/mo",
+      "addons.a1name": "Telegram &amp; SMS gateway",
+      "addons.a1desc": "Broadcasts and notifications via Eskiz. Debts, schedule, payment reminders.",
+      "addons.a2name": "LMS portal",
+      "addons.a2desc": "Tests, video lessons and homework. A full digital learning environment.",
+      "addons.a3name": "E-commerce store",
+      "addons.a3desc": "Sell courses and materials online. Integrated with payment gateways.",
+      "faq.title": "Frequently asked questions",
+      "faq.q1": "Where is our data stored?",
+      "faq.a1": "On reliable, isolated cloud servers with regular backups. Your data is protected and inaccessible to third parties.",
+      "faq.q2": "Can we export our database?",
+      "faq.a2": "Yes, at any time. The data belongs only to you — you can export it to Excel in one click. No platform lock-in.",
+      "faq.q3": "Is it hard to train staff?",
+      "faq.a3": "An e-learning module with step-by-step guides is built in. The interface is intuitive and protected from accidental errors — most employees master the system on their first working day.",
+      "cta.title": "Ready to digitize<br>your education center?",
+      "cta.sub": "3-day free demo. Turnkey setup. 24/7 support.",
+      "cta.btn": "Start for free",
+      "footer.calc": "Unit Economics",
+      "footer.copy": "© 2026 O-tizim. Odoo Education. All rights reserved."
+    },
+    uz: {
+      "hero.tag": "Ta'lim uchun ERP",
+      "hero.h1": "Cheksiz miqdordagi<br><em>o'quvchilar</em>,<br>belgilangan narxda.",
+      "hero.sub": "Ta'lim biznesi uchun yangi avlod ERP tizimi. Cheksiz o'quvchilar, mahalliy to'lov tizimlari bilan integratsiya va kassa uzilishlaridan to'liq himoya.",
+      "hero.btnPrimary": "Demoni sinab ko'rish",
+      "hero.btnSecondary": "Joriy etishni hisoblash",
+      "hero.stat1num": "3 kun", "hero.stat1label": "to'liq ishga tushguncha",
+      "hero.stat2label": "qo'shimcha to'lovsiz o'quvchilar",
+      "hero.stat3label": "oyiga boshlang'ich",
+      "hero.stat4label": "Telegram orqali qo'llab-quvvatlash",
+      "process.label": "Joriy etish",
+      "process.title": "Og'riqsiz start<br>3 kun ichida",
+      "process.sub": "Uzoq integratsiyalar va IT bo'limisiz. Hammasini o'z zimmamizga olamiz.",
+      "process.s1day": "1-kun", "process.s1title": "Ma'lumot yig'ish",
+      "process.s1text": "Qulay Excel shablonini beramiz. Siz shunchaki o'quvchilar ro'yxatini kiritasiz — murakkab formatlar yo'q.",
+      "process.s2day": "2-3-kun", "process.s2title": "Tizimni o'rnatish",
+      "process.s2text": "Xavfsiz bulutli serverlarni o'rnatamiz va ma'lumotlaringizni import qilamiz. To'liq kalitli.",
+      "process.s3day": "Start", "process.s3title": "Qo'llab-quvvatlash",
+      "process.s3text": "Ishga tushirishda bepul yordam, o'rnatilgan video darslar va Telegram ticketlari orqali texnik qo'llab-quvvatlash.",
+      "adv.label": "Afzalliklar",
+      "adv.title": "O'quv markazlarining<br>real muammolarini hal qilamiz",
+      "adv.issue": "Muammo", "adv.solve": "Otizim yechimi",
+      "adv.c1h": "Kassa uzilishlari<br>va soya to'lovlar",
+      "adv.c1p1": "Naqd yoki karta to'lovlarini nazorat qilish qiyin. Cheklar yo'qoladi, ma'lumotlar mos kelmaydi.",
+      "adv.c1p2": "O'zgartirib bo'lmaydigan audit. Administrator to'lovni o'tkazadi, lekin uni keyin o'chira olmaydi. Click, Payme, Uzum bilan tabiiy integratsiya.",
+      "adv.c2h": "Turniketlar va FaceID<br>nazorati illyuziyasi",
+      "adv.c2p1": "O'quvchi bitta arzon kursni to'ladi, lekin FaceID uni barcha fanlarga kiritadi.",
+      "adv.c2p2": "Aqlli to'liq tekshiruv. Tizim o'quvchi qayerga ketayotganini aniq biladi va obuna tugagan bo'lsa, kirishni bloklaydi.",
+      "adv.c3h": "Yo'qolgan lidlar",
+      "adv.c3p1": "O'quvchi sinov darsiga keldi, 'o'ylab ko'raman' deb ketdi — va butunlay unutildi.",
+      "adv.c3p2": "Avtomatik voronka. CRM menejerga mijozga kerakli vaqtda qo'ng'iroq qilish vazifasini o'zi qo'yadi.",
+      "adv.c4h": "Ota-onalar yangi ilovalarni<br>yuklab olishni xohlamaydi",
+      "adv.c4p1": "Murakkab kabinetlar va notanish ilovalar jalb qilishni kamaytiradi.",
+      "adv.c4p2": "Darslar, qarzlar va to'lov havolalari haqidagi barcha bildirishnomalar tanish Telegram-bot orqali keladi. Yangi o'rnatishlar shart emas.",
+      "adv.chip1": "Telegram-bot", "adv.chip2": "SMS bildirishnomalar",
+      "adv.chip3": "Qarz va to'lov", "adv.chip4": "Jadval",
+      "pricing.label": "Tariflar",
+      "pricing.title": "Shaffof narxlar<br>yashirin to'lovlarsiz",
+      "pricing.note": "O'quvchilar portali — <strong>cheksiz</strong>. Siz faqat ichki akkauntlar uchun to'laysiz.",
+      "billing.annual": "Yillik to'lov", "billing.monthly": "Oylik",
+      "billing.save": "Yillik to'lovda <strong>20%</strong> gacha tejang",
+      "plan.period": "oyiga", "plan.popular": "Mashhur",
+      "plan.teamLabel": "Jamoa", "plan.funcLabel": "Funksional",
+      "plan.startName": "Boshlang'ich",
+      "plan.startDesc": "Kichik o'quv markazi yoki repetitorlikni boshlash uchun ideal.",
+      "plan.start.seats": "3 ish o'rni", "plan.start.extra": "Qo'shimcha o'rin — $25/oy",
+      "plan.start.f1": "CRM, jadval, kassa", "plan.start.f2": "O'quvchi portali",
+      "plan.start.f3": "Click / Payme shlyuzlari", "plan.start.f4": "Avtomatik oylik va ombor — yo'q",
+      "plan.start.cta": "Boshlang'ichni tanlash",
+      "plan.bizName": "Biznes",
+      "plan.bizDesc": "Bir nechta o'qituvchi va kengaytirilgan tahlilga ega o'sayotgan markazlar uchun.",
+      "plan.biz.seats": "6 ish o'rni", "plan.biz.extra": "Qo'shimcha o'rin — $22/oy",
+      "plan.biz.f1": "«Boshlang'ich» tarifidagi hammasi", "plan.biz.f2": "Avtomatik oylik hisoblash",
+      "plan.biz.f3": "Ombor hisobi", "plan.biz.f4": "Moliyaviy tahlil",
+      "plan.biz.cta": "Biznesni tanlash",
+      "plan.proName": "Pro",
+      "plan.proDesc": "Bir nechta filialga ega va to'liq avtomatlashtirilgan o'quv markazlari tarmoqlari uchun.",
+      "plan.pro.seats": "10 ish o'rni", "plan.pro.extra": "Qo'shimcha o'rin — $20/oy",
+      "plan.pro.f1": "«Biznes» tarifidagi hammasi", "plan.pro.f2": "Ko'p filiallilik",
+      "plan.pro.f3": "P&amp;L tahlili", "plan.pro.f4": "IP-telefoniya", "plan.pro.f5": "HR-modul",
+      "plan.pro.cta": "Pro-ni tanlash",
+      "addons.label": "Kengaytmalar", "addons.title": "Qo'shimcha modullar",
+      "addons.sub": "Kerakli vositalarni istalgan tarifga ulang.", "addons.per": "/oy",
+      "addons.a1name": "Telegram &amp; SMS shlyuzi",
+      "addons.a1desc": "Eskiz orqali tarqatmalar va bildirishnomalar. Qarzlar, jadval, to'lov eslatmalari.",
+      "addons.a2name": "LMS-kabinet",
+      "addons.a2desc": "Testlar, video darslar va uy vazifalari. To'liq raqamli ta'lim muhiti.",
+      "addons.a3name": "E-commerce do'kon",
+      "addons.a3desc": "Kurslar va materiallarni onlayn soting. To'lov shlyuzlari bilan integratsiya.",
+      "faq.title": "Ko'p so'raladigan savollar",
+      "faq.q1": "Ma'lumotlarimiz qayerda saqlanadi?",
+      "faq.a1": "Muntazam zaxira nusxalari bilan ishonchli, izolyatsiyalangan bulutli serverlarda. Ma'lumotlaringiz himoyalangan va uchinchi shaxslarga ochiq emas.",
+      "faq.q2": "O'z bazamizni yuklab olsak bo'ladimi?",
+      "faq.a2": "Ha, istalgan vaqtda. Ma'lumotlar faqat sizga tegishli — ularni bir marta bosish bilan Excelga yuklashingiz mumkin. Platformaga bog'liqlik yo'q.",
+      "faq.q3": "Xodimlarni o'qitish qiyinmi?",
+      "faq.a3": "Bazaga bosqichma-bosqich ko'rsatmalarga ega e-learning moduli o'rnatilgan. Interfeys intuitiv va tasodifiy xatolardan himoyalangan — ko'pchilik xodimlar tizimni birinchi ish kunida o'zlashtiradi.",
+      "cta.title": "O'quv markazingizni<br>raqamlashtirishga tayyormisiz?",
+      "cta.sub": "3 kunlik bepul demo. Kalitli sozlash. 24/7 qo'llab-quvvatlash.",
+      "cta.btn": "Bepul boshlash",
+      "footer.calc": "Yunit-iqtisodiyot",
+      "footer.copy": "© 2026 O-tizim. Odoo Education. Barcha huquqlar himoyalangan."
+    }
+  };
+
+  const BILLING_NOTE = {
+    ru: { annual: "при оплате за год", monthly: "при помесячной оплате" },
+    en: { annual: "billed annually",  monthly: "billed monthly" },
+    uz: { annual: "yillik to'lovda",   monthly: "oylik to'lovda" }
+  };
+
+  let currentLang = localStorage.getItem('otizimLang') || 'ru';
+  let currentMode = 'annual';
+
+  // Snapshot the original (RU) markup once, so switching back to RU is lossless
+  const i18nEls = Array.from(document.querySelectorAll('[data-i18n]'));
+  const ruBaseline = new Map();
+  i18nEls.forEach(el => ruBaseline.set(el, el.innerHTML));
+
+  function updateBillingNotes() {
+    const text = (BILLING_NOTE[currentLang] || BILLING_NOTE.ru)[currentMode];
+    document.querySelectorAll('.plan-billing-note').forEach(n => { n.textContent = text; });
+  }
+
+  function applyLang(lang) {
+    currentLang = lang;
+    const dict = I18N[lang];
+    i18nEls.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (lang === 'ru' || !dict || dict[key] == null) {
+        el.innerHTML = ruBaseline.get(el);
+      } else {
+        el.innerHTML = dict[key];
+      }
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('#langSwitch button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    updateBillingNotes();
+    try { localStorage.setItem('otizimLang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('#langSwitch button').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  // ── Pricing Billing Toggle (Annual / Monthly) ──
   (function () {
     const billingSwitch = document.getElementById('billingSwitch');
     if (!billingSwitch) return;
 
     const options = billingSwitch.querySelectorAll('.billing-opt');
     const amounts = document.querySelectorAll('.plan-price-amount[data-annual]');
-    const notes   = document.querySelectorAll('.plan-billing-note');
-    const NOTE = { annual: 'при оплате за год', monthly: 'при помесячной оплате' };
 
     function applyBilling(mode) {
+      currentMode = mode;
       billingSwitch.classList.toggle('is-monthly', mode === 'monthly');
 
       options.forEach(opt => {
@@ -1930,7 +1865,7 @@
         el.classList.add('pop');
       });
 
-      notes.forEach(n => { n.textContent = NOTE[mode]; });
+      updateBillingNotes();
     }
 
     options.forEach(opt => {
@@ -1938,27 +1873,8 @@
     });
   })();
 
-  // ── Profitability Report: scoped PDF export ──
-  (function () {
-    const btn = document.getElementById('exportReportBtn');
-    if (!btn) return;
-
-    btn.addEventListener('click', function () {
-      const previousTitle = document.title;
-      // A meaningful default filename when the manager saves the PDF
-      document.title = 'Otizim_Admin_Profitability_Report';
-
-      function restoreTitle() {
-        document.title = previousTitle;
-        window.removeEventListener('afterprint', restoreTitle);
-      }
-      window.addEventListener('afterprint', restoreTitle);
-
-      // The @media print rules hide everything except #profit-report,
-      // so only the report is sent to the A4 printout / PDF.
-      window.print();
-    });
-  })();
+  // Initialize language (also sets the billing note text)
+  applyLang(currentLang);
 </script>
 
 </body>
