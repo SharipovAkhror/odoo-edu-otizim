@@ -1075,6 +1075,32 @@
     max-width: 560px;
   }
 
+  .report-subtitle .ru {
+    display: block;
+    margin-top: 3px;
+    color: var(--text-tertiary);
+  }
+
+  .report-title-ru {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 5px;
+  }
+
+  .kpi-label .ru,
+  .report-table th .ru {
+    display: block;
+    margin-top: 3px;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--text-tertiary);
+  }
+
+  .report-badge .ru { text-transform: none; opacity: 0.85; }
+
   .btn-export {
     display: inline-flex;
     align-items: center;
@@ -1736,28 +1762,29 @@
         <div>
           <span class="report-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Internal Use Only
+            Internal Use Only&nbsp;<span class="ru">· Для служебного пользования</span>
           </span>
           <h2 class="report-title">Admin Profitability Report</h2>
-          <p class="report-subtitle">Unit economics based on annual billing. Vendor license cost: $15 / user / month.</p>
+          <div class="report-title-ru">Отчёт по прибыльности для руководства</div>
+          <p class="report-subtitle">Unit economics based on annual billing. Vendor license cost: $15 / user / month.<span class="ru">Юнит-экономика при годовой оплате. Стоимость лицензии вендора — $15 / пользователь / мес.</span></p>
         </div>
         <button class="btn-export no-print" id="exportReportBtn" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-          Export Report to PDF
+          Export Report to PDF / Экспорт в PDF
         </button>
       </div>
 
       <div class="report-kpis">
         <div class="kpi">
-          <div class="kpi-label">Base Cost / User</div>
+          <div class="kpi-label">Base Cost / User<span class="ru">Базовая стоимость / польз.</span></div>
           <div class="kpi-value">$15<span class="unit"> /mo</span></div>
         </div>
         <div class="kpi">
-          <div class="kpi-label">Avg. Net Margin</div>
+          <div class="kpi-label">Avg. Net Margin<span class="ru">Средняя чистая маржа</span></div>
           <div class="kpi-value brand">41%</div>
         </div>
         <div class="kpi">
-          <div class="kpi-label">Avg. Profit / User</div>
+          <div class="kpi-label">Avg. Profit / User<span class="ru">Средняя прибыль / польз.</span></div>
           <div class="kpi-value">$10.4<span class="unit"> /mo</span></div>
         </div>
       </div>
@@ -1766,18 +1793,18 @@
         <table class="report-table">
           <thead>
             <tr>
-              <th>Plan</th>
-              <th>Workspaces</th>
-              <th>Revenue /mo</th>
-              <th>Vendor Cost</th>
-              <th>Net Profit /mo</th>
-              <th>Profit / User</th>
-              <th>Margin</th>
+              <th>Plan<span class="ru">Тариф</span></th>
+              <th>Workspaces<span class="ru">Рабочие места</span></th>
+              <th>Revenue /mo<span class="ru">Выручка /мес</span></th>
+              <th>Vendor Cost<span class="ru">Затраты вендора</span></th>
+              <th>Net Profit /mo<span class="ru">Чистая прибыль /мес</span></th>
+              <th>Profit / User<span class="ru">Прибыль / польз.</span></th>
+              <th>Margin<span class="ru">Маржа</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="report-plan">Start <small>Annual billing</small></td>
+              <td class="report-plan">Start <small>Годовая оплата</small></td>
               <td>3</td>
               <td>$79</td>
               <td class="cell-cost">$45</td>
@@ -1786,7 +1813,7 @@
               <td><span class="margin-pill">43%</span></td>
             </tr>
             <tr>
-              <td class="report-plan">Business <small>Annual billing</small></td>
+              <td class="report-plan">Business <small>Годовая оплата</small></td>
               <td>6</td>
               <td>$145</td>
               <td class="cell-cost">$90</td>
@@ -1795,7 +1822,7 @@
               <td><span class="margin-pill">38%</span></td>
             </tr>
             <tr>
-              <td class="report-plan">Pro <small>Annual billing</small></td>
+              <td class="report-plan">Pro <small>Годовая оплата</small></td>
               <td>10</td>
               <td>$259</td>
               <td class="cell-cost">$150</td>
@@ -1806,7 +1833,7 @@
           </tbody>
           <tfoot>
             <tr>
-              <td class="report-plan">Combined <small>1&times; each plan</small></td>
+              <td class="report-plan">Combined <small>Итого · 1&times; каждый тариф</small></td>
               <td>19</td>
               <td>$483</td>
               <td class="cell-cost">$285</td>
@@ -1821,6 +1848,9 @@
       <p class="report-foot">
         Vendor Cost = Workspaces &times; $15 (Odoo vendor license). Net Profit = Monthly Revenue &minus; Vendor Cost.
         Profit per User = Net Profit &divide; Workspaces. All figures reflect annual-billing pricing and are intended for internal management review only.
+        <br><br>
+        <span lang="ru">Затраты вендора = Рабочие места &times; $15 (лицензия Odoo). Чистая прибыль = Выручка в месяц &minus; Затраты вендора.
+        Прибыль на пользователя = Чистая прибыль &divide; Рабочие места. Все значения приведены для годовой оплаты и предназначены только для внутреннего использования руководством.</span>
       </p>
     </div>
   </div>
