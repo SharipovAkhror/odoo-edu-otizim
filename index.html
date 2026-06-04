@@ -72,27 +72,6 @@
 
   .logo svg { width: 150px; height: auto; display: block; }
 
-  .btn-pdf {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 20px;
-    background: var(--text);
-    color: #fff;
-    border: none;
-    border-radius: 100px;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.01em;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .btn-pdf:hover { background: var(--brand); transform: translateY(-1px); }
-
-  .btn-pdf svg { width: 14px; height: 14px; flex-shrink: 0; }
-
   /* ── SECTIONS ── */
   section { position: relative; }
 
@@ -755,7 +734,7 @@
 
   .addons-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 
@@ -959,7 +938,7 @@
   @media print {
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     @page { size: A4; margin: 15mm; }
-    header, .btn-pdf, .hero-actions, .plan-cta, .footer-cta, footer { display: none !important; }
+    header, .hero-actions, .plan-cta, .footer-cta, footer { display: none !important; }
     body { font-size: 12px; }
     .hero { min-height: auto; padding: 20px 0 40px; }
     .hero-bg, .hero-grid-lines { display: none; }
@@ -1017,12 +996,6 @@
         </defs>
       </svg>
     </div>
-    <button class="btn-pdf" onclick="window.print()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><circle cx="18" cy="11.5" r="0.5" fill="currentColor"/>
-      </svg>
-      Экспорт в PDF
-    </button>
   </div>
 </header>
 
@@ -1214,20 +1187,6 @@
           Доп. место — $25/мес
         </div>
 
-        <div class="plan-feature-label">Инфраструктура</div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          10 ГБ облачного хранилища
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          1 филиал
-        </div>
-
         <div class="plan-feature-label">Функционал</div>
         <div class="plan-feature">
           <div class="plan-feature-icon">
@@ -1263,7 +1222,7 @@
         <div class="plan-name" style="color: var(--brand);">Бизнес</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
-          <span class="plan-price-amount">145</span>
+          <span class="plan-price-amount">140</span>
         </div>
         <div class="plan-price-period">в месяц</div>
         <div class="plan-desc" style="margin-top: 12px;">Для растущих центров с несколькими преподавателями и расширенной аналитикой.</div>
@@ -1281,20 +1240,6 @@
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
           Доп. место — $22/мес
-        </div>
-
-        <div class="plan-feature-label">Инфраструктура</div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          25 ГБ облачного хранилища
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          1 филиал
         </div>
 
         <div class="plan-feature-label">Функционал</div>
@@ -1331,7 +1276,7 @@
         <div class="plan-name">Про</div>
         <div class="plan-price">
           <span class="plan-price-currency">$</span>
-          <span class="plan-price-amount">250</span>
+          <span class="plan-price-amount">260</span>
         </div>
         <div class="plan-price-period">в месяц</div>
         <div class="plan-desc" style="margin-top: 12px;">Для сетей учебных центров с несколькими филиалами и полной автоматизацией.</div>
@@ -1349,20 +1294,6 @@
             <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
           </div>
           Доп. место — $20/мес
-        </div>
-
-        <div class="plan-feature-label">Инфраструктура</div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          100 ГБ облачного хранилища
-        </div>
-        <div class="plan-feature">
-          <div class="plan-feature-icon">
-            <svg viewBox="0 0 8 8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4l2 2 3-3"/></svg>
-          </div>
-          Безлимит филиалов
         </div>
 
         <div class="plan-feature-label">Функционал</div>
@@ -1421,11 +1352,6 @@
         <div class="addon-price">+$10<span>/мес</span></div>
         <div class="addon-name">E-commerce магазин</div>
         <div class="addon-desc">Продавайте курсы и материалы онлайн. Интеграция с платёжными шлюзами.</div>
-      </div>
-      <div class="addon-card reveal reveal-delay-3">
-        <div class="addon-price">+$10<span>/мес</span></div>
-        <div class="addon-name">Доп. хранилище 20 ГБ</div>
-        <div class="addon-desc">Расширьте облачное пространство для медиафайлов, документов и видеоуроков.</div>
       </div>
     </div>
   </div>
